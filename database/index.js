@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/fetcher');
 let repoSchema = mongoose.Schema({
   id: Number,
   owner: Number,
-  update: Date
+  watchers: Number
   // TODO: your schema here!
 });
 
