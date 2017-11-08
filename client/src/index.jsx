@@ -18,7 +18,7 @@ class App extends React.Component {
       url: '/repos',
       method: 'POST',
       success: function(data) {
-
+        console.log('success');
       },
       data: {
         term: term
