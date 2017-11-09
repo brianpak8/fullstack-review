@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var helper = require('../helpers/github');
+var db = require('../database/index');
 let app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -19,6 +20,7 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
+  console.log('A wild request has arrived', req);
   // TODO - your code here!
   // This route should send back the top 25 repos
 });
