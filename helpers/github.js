@@ -2,9 +2,6 @@ const request = require('request');
 const config = require('../config.js');
 
 let getReposByUsername = (username) => {
-  request(options, function() {
-    
-  });
   // TODO - Use the request module to request repos for a specific
   // user from the github API
 
@@ -17,6 +14,10 @@ let getReposByUsername = (username) => {
       'Authorization': `token ${config.TOKEN}`
     }
   };
+
+  request.get(options, function() {
+
+  });
 
 }
 
