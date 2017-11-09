@@ -20,9 +20,10 @@ class App extends React.Component {
       success: function(data) {
         console.log('success');
       },
-      data: {
-        term: term
-      },
+      data: JSON.stringify({
+        'term': term
+      }),
+      contentType: 'application/json',
       error: function(err) {
         console.log(err);
       },

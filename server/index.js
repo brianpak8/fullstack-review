@@ -1,12 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var helper = require('../helpers/github');
 let app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
-app.use(bodyParser);
+app.use(bodyParser.json());
 
 app.post('/repos', function (req, res) {
-  console.log('!!!!!!!!!!!!!!', req, 'booooooo');
+  console.log('!!!!!!!!!!!!!!', req.body, 'booooooo');
+  helper.getReposByUsername(req.body.term);
+  console.log(req.body.term);
   res.end();
   // TODO - your code here!
   // This route should take the github username provided
