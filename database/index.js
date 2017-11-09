@@ -3,19 +3,25 @@ mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
   id: Number,
-  owner: Number,
+  owner: String,
   watchers: Number
   // TODO: your schema here!
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
-var r = new Repo({id: 3, owner: 6, watchers: 8});
-r.save();
+// var r = new Repo({id: 3, owner: 6, watchers: 8});
+// r.save();
 
 let save = (repos) => {
   repos.forEach(function(repo) {
     let repoToSave = new Repo({id: repo.id, owner: repo.owner.login, watchers: repo.watchers});
-    repoToSave.save({id: repo.id, owner: repo.owner.login, watchers: repo.watchers});
+    repoToSave.save(function(err, repoToSave) {
+      if (err) {
+        console.log('error', err);
+      }
+      repoToSave;
+    });
+    //repoToSave.save({id: repo.id, owner: repo.owner.login, watchers: repo.watchers});
     //repoToSave.findOneAndUpdate({owner: repo.owner.login}, repoToSave, {upsert: true});
   })
   // TODO: Your code here
