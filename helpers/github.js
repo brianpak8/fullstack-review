@@ -23,8 +23,8 @@ let getReposByUsername = (username) => {
       console.log('ERROR!', err)
     }
     // console.log('This is the response', res);
-    // console.log('This is the responseBody', resBody);
-    db.save(resBody);
+    console.log('This is the responseBody', resBody);
+    db.save(JSON.parse(resBody));
   });
 
 }
