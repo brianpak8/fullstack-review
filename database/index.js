@@ -35,13 +35,17 @@ let save = (repos) => {
 }
 //  db.restaurants.find().sort( { "borough": 1, "address.zipcode": 1 } )
 let find = () => {
-  Repo.find().sort({watchers: -1}).limit(25).exec(function(err, result) {
-    if (err) {
-      console.log('error', err);
-    }
-    console.log('HEYYYYYYYYYYYY LOOOOOOOOOK', result);
-    return result;
-  })
+  return Repo.find().sort({watchers: -1}).limit(25)
+  // function(data) {
+  //   console.log('!!!!!!!!!!!!!!!!!!!!!', data);
+  // })
+  // exec(function(err, result) {
+  //   if (err) {
+  //     console.log('error', err);
+  //   }
+  //   //console.log('HEYYYYYYYYYYYY LOOOOOOOOOK', result);
+  //   return result;
+  // })
 };
 
 

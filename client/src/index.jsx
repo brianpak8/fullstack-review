@@ -10,15 +10,29 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
+    //this.setState = this.setState.bind(this);
 
   }
 
   search (term) {
+    var context = this;
     $.ajax({
       url: '/repos',
       method: 'POST',
       success: function(data) {
         console.log('success');
+        $.ajax({
+          url: '/repos',
+          method: 'GET',
+          success: function(data) {
+            data = JSON.parse(data);
+            console.log(data);
+            context.setState({repos: data});
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        })
       },
       data: JSON.stringify({
         'term': term
@@ -33,6 +47,25 @@ class App extends React.Component {
     console.log(`${term} was searched`);
     // TODO
   }
+  componentDidMount() {
+    var context = this;
+
+    $.ajax({
+      url: '/repos',
+      method: 'GET',
+      success: function(data) {
+        console.log(typeof data);
+        data = JSON.parse(data);
+        console.log(typeof data);
+        console.log(data);
+        console.log(Array.isArray(data));
+        context.setState({repos: data});
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
 
   render () {
     return (<div>
@@ -41,7 +74,6 @@ class App extends React.Component {
       <Search onSearch={this.search.bind(this)}/>
     </div>)
   }
-  
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -20,10 +20,16 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
-  console.log('A wild request has arrived', req);
-  console.log('database query', db.find());
-  let data = db.find();
-  res.end(data);
+  //console.log('A wild request has arrived', req);
+  //console.log('database query', db.find());
+  db.find().then(function(data) {
+    console.log('pppppppppppppppppppp', data);
+    res.end(JSON.stringify(data));
+  }).catch(function(err) {
+    console.error(err);
+  });
+  // console.log(data);
+  // res.end(data);
   // TODO - your code here!
   // This route should send back the top 25 repos
 });
