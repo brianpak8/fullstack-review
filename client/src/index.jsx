@@ -41,6 +41,7 @@ class App extends React.Component {
       <Search onSearch={this.search.bind(this)}/>
     </div>)
   }
+  
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
