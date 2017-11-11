@@ -11,7 +11,6 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
-    //this.setState = this.setState.bind(this);
 
   }
 

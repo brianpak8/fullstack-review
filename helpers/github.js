@@ -2,7 +2,7 @@ const request = require('request');
 const config = require('../config.js');
 const db = require('../database/index.js');
 
-let getReposByUsername = (username) => {
+let getReposByUsername = (username, callback) => {
   // TODO - Use the request module to request repos for a specific
   // user from the github API
 
@@ -24,7 +24,7 @@ let getReposByUsername = (username) => {
     }
     // console.log('This is the response', res);
     console.log('This is the responseBody', resBody);
-    db.save(JSON.parse(resBody));
+    db.save(JSON.parse(resBody)).then(callback);
   });
 
 }

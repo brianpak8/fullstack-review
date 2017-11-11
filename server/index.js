@@ -10,9 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/repos', function (req, res) {
   console.log('!!!!!!!!!!!!!!', req.body, 'booooooo');
-  helper.getReposByUsername(req.body.term);
-  console.log(req.body.term);
-  res.end();
+  helper.getReposByUsername(req.body.term, function () {
+    console.log(req.body.term);
+    res.end();
+  });
+
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API, then
